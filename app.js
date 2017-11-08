@@ -11,7 +11,7 @@ var port = process.env.PORT || 8000;
 };*/
 var express = require("express"),
     app =  express(),
-    server = require('https').createServer(app);
+    server = require('http').createServer(app);
 var io = require("socket.io")(server);
 
 app.use(express.static(__dirname + "/public"));
