@@ -3,15 +3,15 @@ var Log = require('log'),
     log = new Log('debug');
 var ip =require('ip');
 var port = process.env.PORT || 8000;
-var options={
+/*var options={
     key: fs.readFileSync('credential/server.key'),
     cert:fs.readFileSync('credential/server.crt'),
     ca:fs.readFileSync('credential/server.csr')
 
-};
+};*/
 var express = require("express"),
     app =  express(),
-    server = require('https').createServer(options,app);
+    server = require('https').createServer(app);
 var io = require("socket.io")(server);
 
 app.use(express.static(__dirname + "/public"));
@@ -49,5 +49,5 @@ io.on('connection', function(socket) {
 });
 
 server.listen(port, function() {
-    log.info('listening on https://'+ip.address()+':'+port);
+    log.info('listening on http://'+ip.address()+':'+port);
 });
